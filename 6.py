@@ -1,15 +1,7 @@
-import sys
-import os
 from utils import *
 
-print(__file__)
-input_file = sys.argv[1] if len(sys.argv)>1 else __file__.replace(".py",".ex")
-if not os.path.exists(input_file):
-    sys.exit(f"{input_file} not found")
-
-grid = open(input_file).read().strip().split('\n')
+grid = read_lines()
 R,C = len(grid),len(grid[0])
-##################################################
 
 for r,line in enumerate(grid):
     if '^' in line:

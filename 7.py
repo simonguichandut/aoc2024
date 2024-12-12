@@ -1,15 +1,8 @@
-import sys
-import os
+from utils import *
 from itertools import product
 
-print(__file__)
-input_file = sys.argv[1] if len(sys.argv)>1 else __file__.replace(".py",".ex")
-if not os.path.exists(input_file):
-    sys.exit(f"{input_file} not found")
-
-data = open(input_file).read().strip().split('\n')
+data = read_lines()
 R,C = len(data),len(data[0])
-##################################################
 
 # Pre-create all the possible lists of operations, up to 12 max operations based on looking at the input
 all_ops = {n:list(product('+*', repeat=n)) for n in range(12)}

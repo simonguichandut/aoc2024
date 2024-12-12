@@ -1,8 +1,8 @@
 # Utilities for advent of code
 
+import sys
+import os
 import re
-import re
-import math
 import operator
 from functools import reduce, total_ordering
 from itertools import permutations
@@ -12,6 +12,29 @@ DIGITS = '0123456789'
 VOWELS = {'a', 'e', 'i', 'o', 'u'}
 CONSONANTS = set(x for x in LETTERS if x not in VOWELS)
 SYMBOLS = '*-=@%/#+&$'
+
+# Input
+def read():
+    if len(sys.argv)==1: sys.exit("No input file")
+    input_file = sys.argv[1]
+    if not os.path.exists(input_file):
+        sys.exit(f"{input_file} not found")
+    return open(input_file).read().strip()
+
+def read_lines():
+    return read().split('\n')
+
+def read_grid():
+    grid = [[int(x) for x in line] for line in read_lines()]
+    return grid
+
+
+# Useful functions
+
+# u/nthistle
+def nums(s):
+    m = re.findall("-?\d+", s)
+    return [int(x) for x in m]
 
 # https://stackoverflow.com/a/34445090
 def findall(p, s):
@@ -161,7 +184,7 @@ def pad(grid, N, pad_char='.'):
         padded_grid.append(pad_char*N + line + pad_char*N)
     padded_grid += [pad_char * (C+2*N) for _ in range(N)] 
     return padded_grid
-    
+
 # Testing
 if __name__ == '__main__':
     s = '123hello456hello7he8llo9_world$'
@@ -171,4 +194,5 @@ if __name__ == '__main__':
     print("Letters", in_string(s, 'letters'))
     print("hello", in_string(s, 'custom', return_indices=True, custom='hello'))
     print("hello and world", in_string(s, 'custom', return_indices=True, custom=['hello','world']))
-    for line in pad(['ab','cd'], 2): print(''.join(line))
+
+    #for line in pad(['ab','cd'], 2): print(''.join(line))

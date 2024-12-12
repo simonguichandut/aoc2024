@@ -1,14 +1,6 @@
-import sys
-import os
-import re
-print(__file__)
+from utils import *
 
-input_file = sys.argv[1] if len(sys.argv)>1 else __file__.replace(".py",".ex")
-if not os.path.exists(input_file):
-    sys.exit(f"{input_file} not found")
-
-txt = open(input_file).read().strip()
-##################################################
+txt = read()
 
 ans = 0
 for mul in re.findall("mul\(\d+,\d+\)", txt):

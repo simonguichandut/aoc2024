@@ -1,24 +1,9 @@
-import sys
-import os
+from utils import *
 
-print(__file__)
-input_file = sys.argv[1] if len(sys.argv)>1 else __file__.replace(".py",".ex")
-if not os.path.exists(input_file):
-    sys.exit(f"{input_file} not found")
+rules, updates = read().split('\n\n')
 
-data = open(input_file).read().strip().split('\n')
-##################################################
-
-reading_rules = True
-rules,updates = [],[]
-for line in  data:
-    if '|' not in line:
-        reading_rules = False
-    if reading_rules:
-        rules.append(list(map(int, line.split('|'))))
-    else:
-        if len(line)>=1:
-            updates.append(list(map(int, line.split(','))))
+rules = [nums(rule) for rule in rules.split('\n')]
+updates = [nums(update) for update in updates.split('\n')]
 
 ans1 = ans2 = 0
 for update in updates:
@@ -44,6 +29,3 @@ for update in updates:
 
 print("Part 1: ", ans1)
 print("Part 2: ", ans2)
-
-
-

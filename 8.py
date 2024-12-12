@@ -1,16 +1,9 @@
-import sys
-import os
 from utils import *
 from collections import defaultdict
 
-print(__file__)
-input_file = sys.argv[1] if len(sys.argv)>1 else __file__.replace(".py",".ex")
-if not os.path.exists(input_file):
-    sys.exit(f"{input_file} not found")
+data = read_lines()
+R,C = len(data), len(data[0])
 
-data = open(input_file).read().strip().split('\n')
-R,C = len(data),len(data[0])
-##################################################
 
 antennas = defaultdict(list)
 for r in range(R):
@@ -58,7 +51,3 @@ print("Part 2: ", len(antinodes2))
 #         else:
 #             s += '.'
 #     print(s)
-
-
-
-

@@ -1,19 +1,10 @@
-import sys
-import os
 from utils import *
 from collections import defaultdict
 from functools import cache
 
-print(__file__)
-input_file = sys.argv[1] if len(sys.argv)>1 else __file__.replace(".py",".ex")
-if not os.path.exists(input_file):
-    sys.exit(f"{input_file} not found")
-
-##################################################
-
 # dict that stores how many stones there are with a given number
 stones =  defaultdict(int)
-for num in nums(open(input_file).read()):
+for num in nums(read()):
     stones[num] += 1
 
 @cache
