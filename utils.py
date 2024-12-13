@@ -13,6 +13,9 @@ VOWELS = {'a', 'e', 'i', 'o', 'u'}
 CONSONANTS = set(x for x in LETTERS if x not in VOWELS)
 SYMBOLS = '*-=@%/#+&$'
 
+adj4 = [(-1,0),(0,1),(1,0),(0,-1)]
+adj8 = [(-1,0),(-1,1),(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1)]
+
 # Input
 def read():
     if len(sys.argv)==1: sys.exit("No input file")
