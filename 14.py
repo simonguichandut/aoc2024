@@ -71,4 +71,4 @@ while t < 10_000:
 
 f.close()
 
-# Part 2 answer: ctrl-f the output file for a long sequence of * '******'
+# Part 2 answer: ctrl-f the output file for a long sequence of * (e.g. *******************)
